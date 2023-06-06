@@ -5,7 +5,10 @@ gzippool is a Go package that provides a container for reusing gzip.Writer and g
 ## Installation
 
 Use `go get` to install gzippool.
+
+```bash
 go get github.com/matyle/gzippool
+```
 
 ## Usage
 

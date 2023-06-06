@@ -1,3 +1,3 @@
-module github/matyle/gzippool
+module github.com/matyle/gzippool
 
-go 1.19
+go 1.16
