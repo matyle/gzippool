@@ -18,7 +18,25 @@ func NewZipPool() *ZipPool {
 	return &ZipPool{
 		writerPool: sync.Pool{
 			New: func() interface{} {
-				return gzip.NewWriter(nil)
+				gz := gzip.NewWriter(nil)
+				return gz
+			},
+		},
+		readerPool: sync.Pool{
+			New: func() interface{} {
+				return new(gzip.Reader)
+			},
+		},
+	}
+}
+
+// NewZipPoolLevel creates a new ZipPool instance with level.
+func NewZipPoolLevel(level int) *ZipPool {
+	return &ZipPool{
+		writerPool: sync.Pool{
+			New: func() interface{} {
+				gz, _ := gzip.NewWriterLevel(nil, level)
+				return gz
 			},
 		},
 		readerPool: sync.Pool{
